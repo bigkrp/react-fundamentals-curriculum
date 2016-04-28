@@ -1,24 +1,22 @@
 import React from 'react';
 
-export default class GetWeather extends React.Component {
-  static propTypes = {
-    location: React.PropTypes.string,
-  };
+const GetWeather = (props) => {
+    let placeholder = props.placeholder || 'St. Georgia, Utah';
 
-  state = {
-    placeholder: 'St. Georgia, Utah'
-  }
-
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
     return (
-        <div>
-            <input className="form-controll" placeholder={this.state.placeholder} value="" type="text" />
-            <button>Get weather</button>
+        <div className={"getweather__holder_"+props.location}>
+            <input className="form-control" placeholder={placeholder} value="" type="text" />
+            <button className="btn btn-success">Get weather</button>
         </div>
     );
-  }
+}
+
+GetWeather.propTypes = {
+    location: React.PropTypes.string.isRequired,
+    placeholder: React.PropTypes.string
 };
+
+
+
+
+export default GetWeather;
