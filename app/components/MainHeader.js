@@ -20,7 +20,7 @@ export default class MainHeader extends React.Component {
 
     this.props.mainHeaderMouned(persentageH);
   }
-  
+
   componentDidMount() {
     this.resizeHandler.call(this);
 
