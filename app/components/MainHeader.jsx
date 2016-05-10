@@ -12,9 +12,9 @@ export default class MainHeader extends React.Component {
   };
 
   resizeHandler(){
-    let bodyH  = document.body.clientHeight,
-    componentH = findDOMNode(this).clientHeight,
-    persentageH;
+    let bodyH    = document.body.clientHeight,
+      componentH = findDOMNode(this).clientHeight,
+      persentageH;
 
     persentageH = (componentH / bodyH) * 100;
 
@@ -37,4 +37,4 @@ export default class MainHeader extends React.Component {
       </header>
     );
   }
-};
+}
