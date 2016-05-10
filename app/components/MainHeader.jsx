@@ -1,6 +1,7 @@
 import React from 'react';
 import { findDOMNode } from 'react-dom';
-import GetWeather from './GetWeather';
+// import GetWeather from './GetWeather';
+import GetCityContainer  from '../containers/GetCityContainer';
 
 export default class MainHeader extends React.Component {
   static propTypes = {
@@ -32,7 +33,7 @@ export default class MainHeader extends React.Component {
       <header className="main-header">
         <h2 className="main-header__title">{this.props.title}</h2>
         <div className="main-header__get-weather">
-          <GetWeather location="horisontal" />
+          <GetCityContainer direction="horisontal" />
         </div>
       </header>
     );

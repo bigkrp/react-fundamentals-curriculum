@@ -4,17 +4,19 @@ const GetWeather = (props) => {
   let placeholder = props.placeholder || 'St. Georgia, Utah';
 
   return (
-    <div className={'getweather__holder_'+props.location}>
-      <input className="form-control" placeholder={placeholder} value="" type="text" />
-      <button className="btn btn-success" onClick={props.getWeather}>Get weather</button>
+    <div className={'getweather__holder_'+props.direction}>
+      <input className="form-control" placeholder={placeholder} onChange={props.onUpdateCity} value={props.city} type="text" />
+      <button className="btn btn-success" onClick={props.onSubmitCity}>Get weather</button>
     </div>
   );
 };
 
 GetWeather.propTypes = {
-  location: React.PropTypes.string.isRequired,
-  placeholder: React.PropTypes.string,
-  getWeather: React.PropTypes.func.isRequired
+  direction   : React.PropTypes.string.isRequired,
+  placeholder : React.PropTypes.string,
+  onSubmitCity: React.PropTypes.func.isRequired,
+  onUpdateCity: React.PropTypes.func.isRequired,
+  city        : React.PropTypes.string
 };
 
 
