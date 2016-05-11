@@ -4,7 +4,7 @@ import GetCityContainer  from '../containers/GetCityContainer';
 
 // import React, {PropTypes} from 'react';
 
-export default class ForecastContainer extends React.Component {
+export default class HomeContainer extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -21,10 +21,10 @@ export default class ForecastContainer extends React.Component {
   }
 }
 
-ForecastContainer.propTypes = {
+HomeContainer.propTypes = {
 };
 
-// let ForecastContainer = () => {
+// let HomeContainer = () => {
 //   return (
 //     <div className="enter-city">
 //       <h1 className="enter-city__title">Enter a City and State</h1>
@@ -35,4 +35,4 @@ ForecastContainer.propTypes = {
 //   );
 // };
 
-// export default ForecastContainer;
+// export default HomeContainer;
