@@ -5,12 +5,12 @@ import Main from '../containers/Main';
 import HomeContainer from '../containers/HomeContainer';
 
 const routes = (
-    <Router history={hashHistory}>
-        <Route path="/" component={Main}>
-          <IndexRoute component={HomeContainer} />
-          <Route path="/forecast" component={HomeContainer} />
-        </Route>
-    </Router>
+  <Router history={hashHistory}>
+    <Route path="/" component={Main}>
+      <IndexRoute component={HomeContainer} />
+      <Route path="/forecast" component={HomeContainer} />
+    </Route>
+  </Router>
 );
 
 export default routes;
