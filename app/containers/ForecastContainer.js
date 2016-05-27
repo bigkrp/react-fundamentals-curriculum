@@ -10,11 +10,18 @@ export default class ForecastContainer extends React.Component {
     daysData: null,
     isLoading: true
   }
-  componentWillMount(){
-    getFiveDaysForecast(this.props.routeParams.city)
+  componentDidMount(){
+    this.makeRequest(this.props.routeParams.city);
+  }
+  componentWillReceiveProps(nextProps) {
+    this.makeRequest(nextProps.routeParams.city);
+  }
+  makeRequest(city){
+    getFiveDaysForecast(city)
       .then((resp)=>{
         this.setState({daysData: resp.data.list, isLoading: false});
       });
+
   }
   render() {
     return (

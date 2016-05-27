@@ -1,10 +1,11 @@
 import React, {PropTypes} from 'react';
+import moment from 'moment';
 
 const DayItem = (props) =>
   <div className='forecast-day'>
-    <img src={'./images/weather-icons/' + props.day.weather[0].icon + '.svg'}
+    <img src={require('../images/weather-icons/' + props.day.weather[0].icon + '.svg')}
     alt={props.day.weather[0].description}/>
-    <h2>{props.day.key}</h2>
+    <h2>{moment(+(props.day.dt + '000')).format('dddd, MMMM Do')}</h2>
   </div>;
 
 DayItem.propTypes = {
@@ -27,6 +28,7 @@ ForecastUi.propTypes = {
 };
 
 export const Forecast = (props) => {
+  console.log(props.daysData);
   return props.isLoading
     ? <h1>Loading</h1>
     : <ForecastUi

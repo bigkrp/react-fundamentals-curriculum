@@ -13,12 +13,14 @@ export default class GetCityContainer extends React.Component {
 
     this.handlerSubmitCity = this.handlerSubmitCity.bind(this);
     this.handlerUpdateCity = this.handlerUpdateCity.bind(this);
+    this.handlerKeyPress   = this.handlerKeyPress.bind(this);
   }
 
   handlerSubmitCity(e){
     e.preventDefault();
-
-    this.context.router.push('/forecast/' + this.state.city);
+    if (this.state.city) {
+      this.context.router.push('/forecast/' + this.state.city);
+    }
   }
 
   handlerUpdateCity(e){
@@ -26,12 +28,18 @@ export default class GetCityContainer extends React.Component {
       city: e.target.value
     });
   }
+  handlerKeyPress(e){
+    if (e.key === 'Enter') {
+      this.handlerSubmitCity(e);
+    }
+  }
 
   render() {
     return (<GetWeather
       direction    = {this.props.direction}
       onSubmitCity = {this.handlerSubmitCity}
       onUpdateCity = {this.handlerUpdateCity}
+      onEnter      = {this.handlerKeyPress}
       city         = {this.state.city} />);
   }
 }
