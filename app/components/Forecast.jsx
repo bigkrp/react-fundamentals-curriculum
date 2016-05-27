@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 
-const DayItem = (props) => 
+const DayItem = (props) =>
   <div className='forecast-day'>
     <img src={'./images/weather-icons/' + props.day.weather[0].icon + '.svg'}
     alt={props.day.weather[0].description}/>
@@ -27,7 +27,6 @@ ForecastUi.propTypes = {
 };
 
 export const Forecast = (props) => {
-  console.log(props.daysData);
   return props.isLoading
     ? <h1>Loading</h1>
     : <ForecastUi

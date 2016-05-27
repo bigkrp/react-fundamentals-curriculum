@@ -14,7 +14,6 @@ export default class ForecastContainer extends React.Component {
     getFiveDaysForecast(this.props.routeParams.city)
       .then((resp)=>{
         this.setState({daysData: resp.data.list, isLoading: false});
-        console.log(this.state);
       });
   }
   render() {
@@ -25,7 +24,8 @@ export default class ForecastContainer extends React.Component {
         isLoading={this.state.isLoading} />
     );
   }
-};
+}
 
 ForecastContainer.propTypes = {
+
 };

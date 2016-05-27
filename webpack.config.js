@@ -1,8 +1,9 @@
-var webpack           = require('webpack');
-var merge             = require('webpack-merge');
-var NpmInstallPlugin  = require('npm-install-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+var webpack            = require('webpack');
+var merge              = require('webpack-merge');
+var NpmInstallPlugin   = require('npm-install-webpack-plugin');
+var ExtractTextPlugin  = require('extract-text-webpack-plugin');
+var HtmlWebpackPlugin  = require('html-webpack-plugin');
+var CleanWebpackPlugin = require('clean-webpack-plugin');
 
 var HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
   template: __dirname + '/app/index.html',
@@ -52,7 +53,7 @@ var common = {
       loader: 'url-loader?limit=10000&mimetype=application/font-woff2&name=[path][name].[ext]'
     }, {
       test: /\.(eot|ttf|svg|gif|png)$/,
-      loader: 'file-loader'
+      loader: 'file-loader?name=[path][name].[ext]?[hash]'
     }]
   },
   plugins: [
@@ -70,10 +71,10 @@ if (TARGET === 'dev' || !TARGET) {
     devServer: {
       port: 8090,
       historyApiFallback: true,
-      hot: false,
+      // hot: false,
       contentBase: `${__dirname}/dist`
     },
-    watch: true,
+    // watch: true,
     plugins: [
       new NpmInstallPlugin({
         save: true // --save
@@ -84,11 +85,16 @@ if (TARGET === 'dev' || !TARGET) {
 if (TARGET === 'build') {
   module.exports = merge(common, {
     devtool: 'source-map',
-    output: {
-      path: `${__dirname}/dist`
-    },
+    // output: {
+    //   path: `${__dirname}/dist`
+    // },
     plugins: [
-      HTMLWebpackPluginConfig
+      HTMLWebpackPluginConfig,
+      new CleanWebpackPlugin(['dist'], {
+        root: __dirname,
+        verbose: true,
+        dry: false
+      })
     ]
   });
 }
