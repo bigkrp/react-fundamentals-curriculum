@@ -25,7 +25,7 @@ export default class Main extends React.Component {
   render() {
     return (
       <div className="main-holder">
-        <MainHeader title='Clever Title' mainHeaderMouned={this.mainHeaderMouned.bind(this)} />
+        <MainHeader title='Main' mainHeaderMouned={this.mainHeaderMouned.bind(this)} />
         <section className="main-container" style={{height:this.state.sectionHeight}}>
           {this.props.children}
         </section>

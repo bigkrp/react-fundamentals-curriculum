@@ -1,6 +1,6 @@
 import React from 'react';
 import { findDOMNode } from 'react-dom';
-// import GetWeather from './GetWeather';
+import {Link} from 'react-router';
 import GetCityContainer  from '../containers/GetCityContainer';
 
 export default class MainHeader extends React.Component {
@@ -31,7 +31,9 @@ export default class MainHeader extends React.Component {
   render() {
     return (
       <header className="main-header">
-        <h2 className="main-header__title">{this.props.title}</h2>
+        <h2 className="main-header__title">
+          <Link to='/'>{this.props.title}</Link>
+        </h2>
         <div className="main-header__get-weather">
           <GetCityContainer direction="horisontal" />
         </div>
