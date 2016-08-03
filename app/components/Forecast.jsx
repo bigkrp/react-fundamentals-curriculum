@@ -1,43 +1,35 @@
 import React, {PropTypes} from 'react';
-import moment from 'moment';
-
-const DayItem = (props) =>
-  <div className='forecast-day'>
-    <img src={require('../images/weather-icons/' + props.day.weather[0].icon + '.svg')}
-    alt={props.day.weather[0].description}/>
-    <h2>{moment(+(props.day.dt + '000')).format('dddd, MMMM Do')}</h2>
-  </div>;
-
-DayItem.propTypes = {
-  day: PropTypes.object.isRequired
-};
+import {DayItem} from './DayItem';
 
 const ForecastUi = (props)=>
   <div className="forecast-container">
     <h1>{props.city}</h1>
     <div className="forecast-day__container">
       {props.daysData.map((item)=>
-        <DayItem key={item.dt} day={item} />
+        <DayItem key={item.dt} day={item} handleClick={props.handleClick.bind(null, item)} />
       )}
     </div>
   </div>;
 
 ForecastUi.propTypes = {
-  city: PropTypes.string,
-  daysData: PropTypes.array
+  city: PropTypes.string.isRequired,
+  daysData: PropTypes.array.isRequired,
+  handleClick: PropTypes.func.isRequired
 };
 
 export const Forecast = (props) => {
-  console.log(props.daysData);
+  // console.log(props.daysData);
   return props.isLoading
     ? <h1>Loading</h1>
     : <ForecastUi
         city={props.city}
-        daysData={props.daysData}/>;
+        daysData={props.daysData}
+        handleClick={props.handleClick}/>;
 };
 
 Forecast.propTypes = {
   isLoading: PropTypes.bool.isRequired,
-  city: PropTypes.string,
-  daysData: PropTypes.array
+  city: PropTypes.string.isRequired,
+  daysData: PropTypes.array.isRequired,
+  handleClick: PropTypes.func.isRequired
 };

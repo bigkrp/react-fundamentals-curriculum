@@ -38,6 +38,7 @@
           "error", {
             "vars": "local"
           }
-        ]
+        ],
+        "react/prop-types": [2, {"ignore":["routeParams", "location"]}]
     }
 }
