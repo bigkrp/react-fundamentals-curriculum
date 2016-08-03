@@ -7,4 +7,4 @@ Simpe React weather app
 [The original task](https://github.com/ReactjsProgram/react-fundamentals-curriculum).
 
 ## Notes
-In my varian used ES6 for React
+In my varian used ES6 for React.
